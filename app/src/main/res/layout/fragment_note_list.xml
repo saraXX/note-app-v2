@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="android.guide.note_app_v2.viewmodel.NoteViewModel" />
+        <variable
+            name="noteListFrag"
+            type="android.guide.note_app_v2.fragments.NoteListFragment" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.NoteListFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/note_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="16dp"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="16dp"
+            app:srcCompat="@drawable/ic_baseline_add_24"
+            android:onClick="@{() -> noteListFrag.createNote()}"/>
+
+    </FrameLayout>
+</layout>

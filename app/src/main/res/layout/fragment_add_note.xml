@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="android.guide.note_app_v2.viewmodel.NoteViewModel" />
+
+        <variable
+            name="addNoteFrag"
+            type="android.guide.note_app_v2.fragments.AddNoteFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="note title : " />
+
+            <EditText
+                android:id="@+id/title_editTextView"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{addNoteFrag.editTitle}"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/body_editTextView"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:gravity="top"
+            android:hint="write your note"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"
+            android:text="@{addNoteFrag.editBody}"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="parent">
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/saveBtn"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="save"
+                    android:onClick="@{() -> addNoteFrag.saveBtn()}"/>
+
+                <Button
+                    android:id="@+id/cancelBtn"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cancel"
+                    android:onClick="@{() -> addNoteFrag.cancelBtn()}"
+                    />
+
+                <Button
+                    android:id="@+id/deleteBtn"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:outlineAmbientShadowColor="#F45151"
+                    android:text="delete"
+                    android:visibility="gone"
+                    android:onClick="@{() -> addNoteFrag.deleteBtn()}"/>
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
